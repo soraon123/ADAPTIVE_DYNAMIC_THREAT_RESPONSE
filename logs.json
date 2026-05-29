@@ -1,0 +1,3502 @@
+[
+  {
+    "process": "System Idle Process",
+    "cpu": 1450.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:18:28"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1454.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:18:37"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1452.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:18:46"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1446.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:18:55"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1367.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:19:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1454.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:19:12"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1485.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:19:21"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1497.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:19:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1494.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:19:39"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1486.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:19:48"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1501.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:19:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1502.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:20:05"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1462.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:20:14"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1463.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:20:23"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1442.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:20:32"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1461.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:20:41"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1471.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:20:50"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1472.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:20:59"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1478.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:21:08"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1481.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:21:17"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1501.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:21:26"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1468.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:21:35"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1460.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:21:44"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1451.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:21:53"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1465.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:22:02"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1470.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:22:11"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1463.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:22:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1170.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:22:28"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1102.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:22:38"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 695.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:22:52"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 799.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:23:05"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 919.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:23:15"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1011.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:23:26"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 930.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:23:36"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 941.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:23:47"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1237.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:23:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1212.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:24:05"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1241.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:24:13"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1113.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:24:21"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1039.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:24:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1011.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:24:39"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1031.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:24:48"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1037.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:24:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1234.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:25:09"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1341.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:25:21"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1583.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:39:22"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1193.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:39:32"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1293.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:39:47"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1371.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:40:00"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1312.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:40:13"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1339.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:40:28"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1453.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:40:38"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1457.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:40:47"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1426.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:40:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1460.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:41:06"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1477.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:41:15"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1477.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:41:24"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1435.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:41:33"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1467.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:41:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1467.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:41:51"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1481.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:41:59"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1472.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:42:08"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1458.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:42:17"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1473.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:42:26"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1477.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:42:34"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1454.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:42:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1485.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:42:52"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1480.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:43:01"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1469.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:43:10"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1466.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:43:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1482.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:43:27"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1473.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:43:36"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1483.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:43:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1461.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:43:53"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1323.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:44:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1539.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:47:11"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1384.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:47:25"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1367.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:47:34"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1470.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:47:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1477.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:47:52"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1417.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:48:02"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1468.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:48:11"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1478.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:48:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1465.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:48:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1482.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:48:39"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1450.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:48:48"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1362.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:48:59"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1463.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:49:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1381.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:49:17"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1388.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:49:27"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1419.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:49:37"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1380.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:49:47"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1286.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:49:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1245.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:50:15"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1415.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:50:25"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1303.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:50:37"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1443.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:50:46"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1446.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:50:55"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1418.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:51:04"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1446.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:51:13"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1467.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:51:22"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1470.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:51:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1385.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:51:40"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1395.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:51:50"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1463.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:51:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1457.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:52:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1457.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:52:16"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1410.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:52:26"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1369.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:52:36"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1461.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:52:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1459.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:52:54"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1446.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:53:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1267.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:53:15"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1478.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:53:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1418.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:53:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1362.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:53:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1373.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:54:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1336.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:54:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1371.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:54:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1324.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:54:46"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1377.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:54:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1340.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:55:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1349.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:55:33"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1232.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:55:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1315.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:56:11"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1301.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:56:23"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1338.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:56:40"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1285.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:56:52"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1325.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:57:17"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1277.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:57:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1310.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:58:01"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1321.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:58:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1171.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:58:33"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1333.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:58:44"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1310.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:58:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1292.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:59:08"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1295.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:59:22"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1346.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:59:46"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1251.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 14:59:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1231.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:00:13"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1228.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:00:27"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1361.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:00:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1348.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:01:02"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1305.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:01:23"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1232.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:01:39"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 971.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:01:52"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1159.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:02:05"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1063.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:02:18"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1026.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:02:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1155.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:02:44"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1318.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:02:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1359.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:03:16"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1320.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:03:28"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1393.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:03:40"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1375.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:04:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1359.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:04:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1326.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:04:33"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1237.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:04:46"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1385.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:04:59"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1359.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:05:16"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1302.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:05:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1327.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:05:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1360.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:06:04"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1366.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:06:18"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1391.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:06:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1354.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:06:47"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1405.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:06:59"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1360.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:07:17"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1355.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:07:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1341.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:07:50"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1351.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:08:02"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1357.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:08:13"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1364.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:08:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1384.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:08:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1333.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:08:59"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1300.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:09:14"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1366.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:09:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1403.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:09:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1366.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:10:28"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1368.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:10:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1363.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:10:54"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1415.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:11:05"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1414.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:11:15"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1408.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:11:26"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1416.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:11:36"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1422.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:11:46"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1419.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:11:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1420.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:12:08"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1423.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:12:18"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1416.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:12:29"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1404.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:12:39"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1412.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:12:49"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1421.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:12:59"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1419.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:13:09"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1416.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:13:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1417.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:13:29"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1416.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:13:40"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1419.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:13:50"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1506.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:14:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1206.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:15:27"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1385.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:15:50"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1393.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:16:01"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1305.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:16:13"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1409.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:16:23"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1401.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:16:34"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1391.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:16:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1424.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:16:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1405.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-08 15:17:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1469.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:32:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1339.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:33:02"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1387.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:33:16"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1478.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:33:25"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1481.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:33:34"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1491.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:33:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1424.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:33:53"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1449.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:34:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1437.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:34:12"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1455.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:34:22"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1438.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 13:34:32"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1101.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:00:38"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1425.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:00:49"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1487.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:01:00"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1483.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:01:11"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1480.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:01:22"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1476.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:01:33"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1478.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:01:44"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1316.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:01:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1470.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:02:09"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1487.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:02:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1472.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:02:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1478.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:02:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1486.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:02:53"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1479.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:03:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1476.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:03:14"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1473.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:03:25"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1436.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:03:36"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1493.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:03:46"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1475.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:03:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1493.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:04:08"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1477.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:04:18"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1473.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:04:29"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1439.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:04:40"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1482.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:04:51"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1463.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:05:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1476.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:05:13"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1482.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:05:24"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1459.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:05:35"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1487.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:05:46"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1483.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:05:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1487.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:06:08"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1416.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:06:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1433.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:06:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1426.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:06:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1449.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:06:54"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1473.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:07:04"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1485.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:07:15"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1485.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:07:26"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1484.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:07:37"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1485.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:07:47"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1491.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:07:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1486.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:08:09"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1478.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:08:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1449.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:08:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1480.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:08:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1487.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:08:52"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1476.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:09:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1481.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:09:14"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1478.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:09:25"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1346.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:09:37"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1462.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:09:48"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1430.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:09:59"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1382.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:10:11"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1413.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:10:22"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1421.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:10:34"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1421.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:10:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1438.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:10:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1463.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:11:08"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1459.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:11:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1344.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:11:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1407.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:11:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1469.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:11:53"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1412.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:12:05"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1302.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:12:18"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1294.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:12:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 833.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:12:47"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1406.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:13:00"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1402.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:13:12"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1365.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:13:27"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1319.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:13:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1317.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:13:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1372.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:14:10"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1367.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:14:23"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1331.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:14:38"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1416.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:14:51"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1223.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:15:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1427.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:15:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1327.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:15:35"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1373.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:15:49"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1402.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:16:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1238.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:16:18"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1372.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:16:32"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1371.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:16:46"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1288.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:17:02"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1417.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:17:16"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1439.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:17:29"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1414.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:17:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1315.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:17:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1369.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:18:13"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1357.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:18:27"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1340.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:18:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1472.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:18:54"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1476.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:19:06"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1367.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:19:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1409.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:19:32"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1439.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:19:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1434.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:19:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1420.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:20:11"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1423.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:20:24"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1443.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:20:36"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1457.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:20:48"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1431.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:21:01"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1372.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:21:14"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1466.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:21:26"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1343.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:21:39"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1416.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:21:52"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1333.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:22:06"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1337.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:22:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1357.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:22:34"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1386.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:22:47"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1368.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:23:01"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1389.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:23:15"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1413.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:23:27"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1344.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:23:41"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1432.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:23:53"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1472.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:24:05"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1408.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:24:17"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1383.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:24:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1489.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:24:41"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1431.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:24:53"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1478.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:25:05"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1399.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:25:18"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1409.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:25:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1476.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:25:42"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1461.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:25:54"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1445.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:26:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1440.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:26:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1411.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:26:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1482.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:26:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1482.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:26:55"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1409.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:27:09"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1443.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:27:21"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1444.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:27:34"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1399.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:27:47"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1472.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:27:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1489.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:28:10"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1453.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:28:21"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1471.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:28:33"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1496.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:28:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1496.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:28:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1447.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:29:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1354.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:29:26"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1469.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:31:29"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1120.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:31:50"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1188.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:32:08"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1329.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:32:25"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1412.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:32:40"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1430.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:32:54"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1470.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:33:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1418.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:33:21"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1445.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:33:35"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1432.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:33:48"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1436.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:34:02"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1351.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:34:17"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1429.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:34:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1462.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:34:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1401.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:34:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1463.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:35:09"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1411.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:35:23"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1465.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:35:36"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1452.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:35:49"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1454.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:36:02"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1415.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:36:15"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1444.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:36:28"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1376.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:36:41"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1302.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:36:57"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1430.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:37:10"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1391.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:37:24"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1391.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:37:38"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1383.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:37:52"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1471.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:38:05"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1462.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:38:17"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1475.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:38:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1484.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:38:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1310.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:38:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1420.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:39:11"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1440.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:39:24"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1482.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:39:37"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1479.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:39:50"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1460.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:40:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1450.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:40:16"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1314.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:40:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1391.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:40:44"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1427.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:40:58"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1404.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:41:12"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1383.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:41:26"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1408.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:41:40"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1281.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:41:55"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1430.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:42:09"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1262.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:42:24"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1407.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:42:37"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1397.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:42:51"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1398.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:43:04"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1405.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:43:18"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1466.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:43:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1472.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:43:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1467.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:43:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1468.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:44:09"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1449.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:44:21"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1440.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:44:35"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1319.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:44:49"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1372.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:45:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1353.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:45:17"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 46.7,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:45:20"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1241.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:45:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1231.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:45:34"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 50.7,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:45:35"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 52.2,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:45:39"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1196.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:45:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1199.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:45:48"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 57.7,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:45:49"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 53.5,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:45:52"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1385.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:45:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1402.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:45:59"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 55.0,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:46:00"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 57.0,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:46:02"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1101.6,
+    "risk": "HIGH",
+    "action": "access-denied",
+    "timestamp": "2026-05-13 14:46:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1356.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1101.6,
+    "risk": "HIGH",
+    "action": "access-denied",
+    "timestamp": "2026-05-13 14:46:11"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1344.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:13"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 51.1,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:46:14"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 51.2,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:46:17"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1236.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:23"
+  },
+  {
+    "process": "msedge.exe",
+    "cpu": 61.7,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:46:24"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1207.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:27"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 51.7,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:46:27"
+  },
+  {
+    "process": "msedge.exe",
+    "cpu": 86.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:27"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 40.8,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:46:36"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1271.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:40"
+  },
+  {
+    "process": "msedge.exe",
+    "cpu": 97.3,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1153.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:49"
+  },
+  {
+    "process": "msedge.exe",
+    "cpu": 98.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:50"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1108.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:46:58"
+  },
+  {
+    "process": "msedge.exe",
+    "cpu": 98.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:47:00"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1218.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:47:11"
+  },
+  {
+    "process": "msedge.exe",
+    "cpu": 98.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:47:12"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1255.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:47:17"
+  },
+  {
+    "process": "msedge.exe",
+    "cpu": 77.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:47:17"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 49.5,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:47:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1252.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:47:27"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 45.8,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:47:30"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1431.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:47:39"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 41.8,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:47:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1474.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:47:51"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 42.1,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:47:55"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1434.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:48:03"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 40.0,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:48:07"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1476.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:48:15"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 40.6,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:48:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1488.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:48:27"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 41.6,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:48:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1476.2,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:48:39"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 42.3,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:48:43"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1452.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:48:51"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 43.2,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:48:54"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1436.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:49:03"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1458.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:49:15"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 43.2,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-13 14:49:19"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1476.6,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-13 14:49:27"
+  },
+  {
+    "process": "test_runaway.exe",
+    "cpu": 85.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:15:01"
+  },
+  {
+    "process": "test_runaway.exe",
+    "cpu": 85.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:15:01"
+  },
+  {
+    "process": "test_runaway.exe",
+    "cpu": 85.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:15:13"
+  },
+  {
+    "process": "test_runaway.exe",
+    "cpu": 85.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:15:13"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1124.7,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:16:13"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 78.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:16:15"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1214.5,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:16:21"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 124.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:16:23"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1199.8,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:16:29"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 135.1,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:16:31"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1318.9,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:16:37"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 130.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:16:39"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1249.4,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:16:45"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1124.7,
+    "risk": "HIGH",
+    "action": "ignored",
+    "timestamp": "2026-05-29 16:16:45"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 78.0,
+    "risk": "HIGH",
+    "action": "ignored",
+    "timestamp": "2026-05-29 16:16:46"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 57.2,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-29 16:16:56"
+  },
+  {
+    "process": "System Idle Process",
+    "cpu": 1249.4,
+    "risk": "HIGH",
+    "action": "ignored",
+    "timestamp": "2026-05-29 16:16:57"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 51.1,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-29 16:17:04"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 44.9,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-29 16:17:12"
+  },
+  {
+    "process": "MsMpEng.exe",
+    "cpu": 45.0,
+    "risk": "MEDIUM",
+    "action": "logged",
+    "timestamp": "2026-05-29 16:17:20"
+  },
+  {
+    "process": "test_runaway.exe",
+    "cpu": 85.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:28:15"
+  },
+  {
+    "process": "test_runaway.exe",
+    "cpu": 85.0,
+    "risk": "HIGH",
+    "action": "alert",
+    "timestamp": "2026-05-29 16:28:15"
+  }
+]

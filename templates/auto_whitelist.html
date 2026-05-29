@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Auto-Whitelist{% endblock %}
+
+{% block head %}
+<style>
+  .awl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .awl-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .awl-card.trusted {
+    border-color: rgba(34,197,94,.3);
+    background: rgba(34,197,94,.04);
+  }
+
+  .awl-proc { font-size: 14px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+  .awl-status { font-size: 11px; color: var(--muted); }
+
+  .progress-bar {
+    height: 5px; background: var(--surface2);
+    border-radius: 4px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; border-radius: 4px;
+    background: var(--accent-g);
+    transition: width .4s ease;
+  }
+  .trusted .progress-fill { background: linear-gradient(90deg, #22c55e, #4ade80); }
+
+  .trust-label {
+    font-size: 11px; display: flex; justify-content: space-between;
+  }
+  .trust-label span:last-child { color: var(--muted); }
+
+  .how-it-works {
+    background: rgba(91,138,244,.06);
+    border: 1px solid rgba(91,138,244,.15);
+    border-radius: 8px; padding: 16px 18px; margin-bottom: 24px;
+    font-size: 13px; color: var(--muted); line-height: 1.7;
+  }
+  .how-it-works strong { color: var(--accent); }
+  .how-it-works code {
+    background: var(--surface2); padding: 1px 6px;
+    border-radius: 4px; font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>Auto-Whitelist (Learning)</h1>
+    <p>Processes that consistently run safely are trusted automatically</p>
+  </div>
+  <div style="font-size:12px;color:var(--muted);">Threshold: {{ threshold }} safe runs</div>
+</div>
+
+<div class="how-it-works">
+  🧠 <strong>How it works:</strong>
+  Each time a process is seen as <code>LOW</code> risk, whitelisted, or auto-whitelisted, its safe-run counter increments.
+  Once a process reaches <strong>{{ threshold }} safe runs</strong>, it is automatically trusted and its alerts are suppressed.
+  This allows the system to <strong>learn</strong> your environment over time.
+</div>
+
+{% if auto_whitelist %}
+  <div style="font-size:13px;color:var(--muted);margin-bottom:4px;">
+    {{ auto_whitelist|length }} process{{ "es" if auto_whitelist|length != 1 else "" }} tracked —
+    {{ auto_whitelist.values()|select('ge', threshold)|list|length }} trusted
+  </div>
+  <div class="awl-grid">
+    {% for proc, count in auto_whitelist.items()|sort(attribute=1, reverse=True) %}
+    {% set pct = [(count / threshold * 100), 100]|min|round|int %}
+    {% set trusted = count >= threshold %}
+    <div class="awl-card {% if trusted %}trusted{% endif %}">
+      <div class="awl-proc">{{ proc }}</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:{{ pct }}%;"></div>
+      </div>
+      <div class="trust-label">
+        <span style="color:{% if trusted %}var(--low){% else %}var(--text){% endif %};">
+          {% if trusted %}✓ Auto-trusted{% else %}{{ count }} / {{ threshold }} runs{% endif %}
+        </span>
+        <span>{{ pct }}%</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="empty-state">
+    <div class="icon">🧠</div>
+    <p>The system is still learning. Safe-run data will appear here as processes are monitored.</p>
+  </div>
+{% endif %}
+{% endblock %}

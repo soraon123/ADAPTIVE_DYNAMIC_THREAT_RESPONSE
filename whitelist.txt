@@ -1,0 +1,7 @@
+python.exe
+pythonw.exe
+code.exe
+chrome.exe
+firefox.exe
+notepad.exe
+taskmgr.exe

@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  dtrs:
+    build: .
+    container_name: dtrs_monitor
+    pid: host  # Crucial: allows the container to monitor host processes
+    ports:
+      - "5000:5000"
+    restart: unless-stopped

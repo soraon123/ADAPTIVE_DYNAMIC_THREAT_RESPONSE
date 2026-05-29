@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block head %}
+<style>
+  .cpu-bar {
+    width: 80px; height: 5px;
+    background: var(--surface2);
+    border-radius: 4px; overflow: hidden;
+    display: inline-block; vertical-align: middle;
+    margin-right: 7px;
+  }
+  .cpu-bar-fill {
+    height: 100%; border-radius: 4px;
+    transition: width .4s ease;
+  }
+  .filter-row {
+    display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter-btn {
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface2); color: var(--muted);
+    transition: all .18s;
+  }
+  .filter-btn.active-f { border-color: var(--accent); color: var(--accent); background: rgba(91,138,244,.1); }
+  .filter-btn:hover { color: var(--text); }
+  #refresh-timer {
+    margin-left: auto; font-size: 12px; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  #process-count { font-size: 12px; color: var(--muted); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>Live Process Dashboard</h1>
+    <p>Real-time view of running processes and their risk classification</p>
+  </div>
+  <div style="font-size:12px;color:var(--muted);">Auto-refreshes every 3s</div>
+</div>
+
+<!-- Stats row -->
+<div class="stats-grid" id="stats-grid">
+  <div class="stat-card total">
+    <div class="label">Total Processes</div>
+    <div class="value" id="stat-total">{{ processes|length }}</div>
+  </div>
+  <div class="stat-card high">
+    <div class="label">High Risk</div>
+    <div class="value" id="stat-high">{{ processes|selectattr('risk','eq','HIGH')|list|length }}</div>
+  </div>
+  <div class="stat-card medium">
+    <div class="label">Medium Risk</div>
+    <div class="value" id="stat-med">{{ processes|selectattr('risk','eq','MEDIUM')|list|length }}</div>
+  </div>
+  <div class="stat-card low">
+    <div class="label">Low Risk</div>
+    <div class="value" id="stat-low">{{ processes|selectattr('risk','eq','LOW')|list|length }}</div>
+  </div>
+</div>
+
+<!-- Filter row -->
+<div class="filter-row">
+  <button class="filter-btn active-f" data-filter="ALL" onclick="setFilter('ALL',this)">All</button>
+  <button class="filter-btn" data-filter="HIGH"   onclick="setFilter('HIGH',this)">🔴 High</button>
+  <button class="filter-btn" data-filter="MEDIUM" onclick="setFilter('MEDIUM',this)">🟡 Medium</button>
+  <button class="filter-btn" data-filter="LOW"    onclick="setFilter('LOW',this)">🟢 Low</button>
+  <span id="process-count"></span>
+  <span id="refresh-timer">next refresh in 3s</span>
+</div>
+
+<!-- Process table -->
+<div class="card">
+  <div class="table-wrap">
+    <table id="process-table">
+      <thead>
+        <tr>
+          <th>PID</th>
+          <th>Process Name</th>
+          <th>CPU %</th>
+          <th>Memory %</th>
+          <th>Risk</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="proc-body">
+        {% for p in processes %}
+        <tr data-risk="{{ p.risk }}">
+          <td class="mono">{{ p.pid }}</td>
+          <td class="pname">{{ p.name }}</td>
+          <td>
+            <span class="cpu-bar">
+              <span class="cpu-bar-fill" style="width:{{ [p.cpu,100]|min }}%;background:{{
+                '#ef4444' if p.risk == 'HIGH' else
+                '#f59e0b' if p.risk == 'MEDIUM' else '#22c55e'
+              }};"></span>
+            </span>
+            {{ p.cpu }}%
+          </td>
+          <td>{{ p.mem }}%</td>
+          <td><span class="badge {{ p.risk }}">{{ p.risk }}</span></td>
+          <td style="color:var(--muted);font-size:12px;">{{ p.reason }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:30px;">Loading processes…</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  let currentFilter = "ALL";
+  let countdown = 3;
+
+  function setFilter(f, btn) {
+    currentFilter = f;
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active-f"));
+    btn.classList.add("active-f");
+    applyFilter();
+  }
+
+  function applyFilter() {
+    const rows = document.querySelectorAll("#proc-body tr[data-risk]");
+    let visible = 0;
+    rows.forEach(r => {
+      const show = currentFilter === "ALL" || r.dataset.risk === currentFilter;
+      r.style.display = show ? "" : "none";
+      if (show) visible++;
+    });
+    document.getElementById("process-count").textContent = `Showing ${visible} processes`;
+  }
+
+  function renderTable(processes) {
+    const body = document.getElementById("proc-body");
+    if (!processes.length) {
+      body.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:30px;">No processes found.</td></tr>`;
+      return;
+    }
+    const colorMap = { HIGH: "#ef4444", MEDIUM: "#f59e0b", LOW: "#22c55e" };
+    body.innerHTML = processes.map(p => `
+      <tr data-risk="${p.risk}">
+        <td class="mono">${p.pid}</td>
+        <td class="pname">${p.name}</td>
+        <td>
+          <span class="cpu-bar">
+            <span class="cpu-bar-fill" style="width:${Math.min(p.cpu,100)}%;background:${colorMap[p.risk]};"></span>
+          </span>${p.cpu}%
+        </td>
+        <td>${p.mem}%</td>
+        <td><span class="badge ${p.risk}">${p.risk}</span></td>
+        <td style="color:var(--muted);font-size:12px;">${p.reason}</td>
+      </tr>`).join("");
+    applyFilter();
+
+    // Update stats
+    document.getElementById("stat-total").textContent = processes.length;
+    document.getElementById("stat-high").textContent  = processes.filter(p=>p.risk==="HIGH").length;
+    document.getElementById("stat-med").textContent   = processes.filter(p=>p.risk==="MEDIUM").length;
+    document.getElementById("stat-low").textContent   = processes.filter(p=>p.risk==="LOW").length;
+  }
+
+  async function refresh() {
+    try {
+      const res  = await fetch("/api/processes");
+      const data = await res.json();
+      renderTable(data.processes);
+
+      // Update sidebar alert badge dynamically
+      const badge = document.querySelector(".alert-badge");
+      if (data.alert_count > 0) {
+        if (badge) { badge.textContent = data.alert_count; badge.style.display = ""; }
+        else {
+          const a = document.getElementById("nav-alerts");
+          a.insertAdjacentHTML("beforeend", `<span class="alert-badge">${data.alert_count}</span>`);
+        }
+      } else if (badge) badge.style.display = "none";
+    } catch(e) { console.warn("refresh failed", e); }
+  }
+
+  // Countdown ticker
+  const timerEl = document.getElementById("refresh-timer");
+  setInterval(() => {
+    countdown--;
+    if (countdown <= 0) {
+      countdown = 3;
+      refresh();
+    }
+    timerEl.textContent = `next refresh in ${countdown}s`;
+  }, 1000);
+
+  // Initial apply
+  applyFilter();
+</script>
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% block title %}Alerts{% endblock %}
+
+{% block head %}
+<style>
+  .alert-card {
+    background: var(--surface);
+    border: 1px solid rgba(239,68,68,.25);
+    border-left: 3px solid var(--high);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    animation: slideIn .3s ease;
+    transition: opacity .3s, transform .3s;
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .alert-card.dismissed { opacity: 0; transform: translateX(20px); }
+
+  .alert-info { flex: 1; min-width: 200px; }
+  .alert-info .proc-name {
+    font-size: 15px; font-weight: 600; color: var(--text);
+    margin-bottom: 6px;
+  }
+  .alert-meta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .alert-meta span {
+    font-size: 12px; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .alert-meta span strong { color: var(--text); }
+
+  .alert-actions { display: flex; gap: 8px; }
+
+  .warn-banner {
+    background: rgba(239,68,68,.06);
+    border: 1px solid rgba(239,68,68,.18);
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 13px; color: var(--muted);
+    margin-bottom: 22px; display: flex; align-items: center; gap: 10px;
+  }
+  .warn-banner strong { color: var(--high); }
+
+  #alert-count-badge {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>Active Alerts</h1>
+    <p>HIGH-risk processes awaiting your decision — system will NOT auto-terminate</p>
+  </div>
+  <button class="btn btn-ghost btn-sm" onclick="pollAlerts()">↻ Refresh</button>
+</div>
+
+<div class="warn-banner">
+  ⚠️ <strong>Manual action required.</strong>
+  Review each alert and choose to terminate or ignore. System-critical processes are always protected.
+</div>
+
+<div id="alert-count-badge"></div>
+<div id="alert-list">
+  {% if alerts %}
+    {% for a in alerts %}
+    <div class="alert-card" id="ac-{{ a.pid }}">
+      <div class="alert-info">
+        <div class="proc-name">🔴 {{ a.name }}</div>
+        <div class="alert-meta">
+          <span>PID <strong>{{ a.pid }}</strong></span>
+          <span>CPU <strong>{{ a.cpu }}%</strong></span>
+          <span>Mem <strong>{{ a.mem }}%</strong></span>
+          <span><span class="badge HIGH">HIGH RISK</span></span>
+        </div>
+      </div>
+      <div class="alert-actions">
+        <button class="btn btn-danger btn-sm"
+          onclick="takeAction({{ a.pid }}, 'terminate', '{{ a.name }}', {{ a.cpu }})">
+          ✅ Terminate
+        </button>
+        <button class="btn btn-ghost btn-sm"
+          onclick="takeAction({{ a.pid }}, 'ignore', '{{ a.name }}', {{ a.cpu }})">
+          ❌ Ignore
+        </button>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty-state" id="empty-msg">
+      <div class="icon">✅</div>
+      <p>No active alerts — all clear!</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  async function takeAction(pid, action, name, cpu) {
+    const card = document.getElementById("ac-" + pid);
+    if (card) card.classList.add("dismissed");
+
+    try {
+      const res  = await fetch("/action", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pid, action, name, cpu })
+      });
+      const data = await res.json();
+      showToast(data.message, data.success);
+
+      setTimeout(() => {
+        if (card) card.remove();
+        checkEmpty();
+      }, 400);
+    } catch(e) {
+      showToast("Request failed: " + e, false);
+      if (card) card.classList.remove("dismissed");
+    }
+  }
+
+  function checkEmpty() {
+    const list = document.getElementById("alert-list");
+    const cards = list.querySelectorAll(".alert-card");
+    if (!cards.length) {
+      list.innerHTML = `<div class="empty-state"><div class="icon">✅</div><p>No active alerts — all clear!</p></div>`;
+      document.getElementById("alert-count-badge").textContent = "";
+      // Clear sidebar badge
+      const badge = document.querySelector(".alert-badge");
+      if (badge) badge.style.display = "none";
+    }
+  }
+
+  async function pollAlerts() {
+    try {
+      const res  = await fetch("/api/alerts");
+      const data = await res.json();
+      const alerts = data.alerts;
+
+      const badge = document.getElementById("alert-count-badge");
+      badge.textContent = alerts.length
+        ? `${alerts.length} active alert${alerts.length>1?"s":""}:`
+        : "";
+
+      const list = document.getElementById("alert-list");
+      if (!alerts.length) {
+        list.innerHTML = `<div class="empty-state"><div class="icon">✅</div><p>No active alerts — all clear!</p></div>`;
+        return;
+      }
+
+      // Add new cards for new pids
+      const existingPids = new Set([...list.querySelectorAll(".alert-card")].map(c=>c.id.replace("ac-","")));
+      const newPids = new Set(alerts.map(a=>String(a.pid)));
+
+      // Remove stale
+      existingPids.forEach(ep => {
+        if (!newPids.has(ep)) {
+          const el = document.getElementById("ac-"+ep);
+          if (el) el.remove();
+        }
+      });
+
+      // Add new
+      alerts.forEach(a => {
+        if (!existingPids.has(String(a.pid))) {
+          list.insertAdjacentHTML("afterbegin", `
+            <div class="alert-card" id="ac-${a.pid}">
+              <div class="alert-info">
+                <div class="proc-name">🔴 ${a.name}</div>
+                <div class="alert-meta">
+                  <span>PID <strong>${a.pid}</strong></span>
+                  <span>CPU <strong>${a.cpu}%</strong></span>
+                  <span>Mem <strong>${a.mem}%</strong></span>
+                  <span><span class="badge HIGH">HIGH RISK</span></span>
+                </div>
+              </div>
+              <div class="alert-actions">
+                <button class="btn btn-danger btn-sm"
+                  onclick="takeAction(${a.pid},'terminate','${a.name}',${a.cpu})">✅ Terminate</button>
+                <button class="btn btn-ghost btn-sm"
+                  onclick="takeAction(${a.pid},'ignore','${a.name}',${a.cpu})">❌ Ignore</button>
+              </div>
+            </div>`);
+        }
+      });
+    } catch(e) { console.warn("poll failed", e); }
+  }
+
+  // Auto-poll every 4s
+  setInterval(pollAlerts, 4000);
+</script>
+{% endblock %}
