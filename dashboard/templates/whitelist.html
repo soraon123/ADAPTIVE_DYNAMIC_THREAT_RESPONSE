@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}Whitelist{% endblock %}
+
+{% block head %}
+<style>
+  .wl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 800px) { .wl-grid { grid-template-columns: 1fr; } }
+
+  .wl-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; border-radius: 7px;
+    background: var(--surface2); margin-bottom: 6px;
+    font-size: 13px; font-family: 'JetBrains Mono', monospace;
+    transition: background .15s;
+  }
+  .wl-item:hover { background: #1e2336; }
+
+  .add-form {
+    display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;
+  }
+
+  .critical-pill {
+    display: inline-block; padding: 3px 10px; border-radius: 20px;
+    font-size: 11.5px; font-family: 'JetBrains Mono', monospace;
+    background: rgba(239,68,68,.08); color: #f87171;
+    border: 1px solid rgba(239,68,68,.18);
+    margin: 3px;
+  }
+
+  .info-note {
+    background: rgba(91,138,244,.06);
+    border: 1px solid rgba(91,138,244,.18);
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 12.5px; color: var(--muted); margin-bottom: 22px;
+  }
+  .info-note strong { color: var(--accent); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>Whitelist Manager</h1>
+    <p>Whitelisted processes are always ignored during threat scanning</p>
+  </div>
+</div>
+
+<div class="info-note">
+  ℹ️ <strong>System-critical processes</strong> are always protected and cannot be whitelisted or terminated:
+  <div style="margin-top:8px;">
+    <span class="critical-pill">svchost.exe</span>
+    <span class="critical-pill">csrss.exe</span>
+    <span class="critical-pill">wininit.exe</span>
+    <span class="critical-pill">services.exe</span>
+    <span class="critical-pill">explorer.exe</span>
+  </div>
+</div>
+
+<div class="wl-grid">
+  <!-- User Whitelist -->
+  <div class="card">
+    <div class="section-title">✅ User Whitelist <span style="color:var(--muted);font-weight:400;font-size:12px;margin-left:6px;">({{ whitelist|length }} entries)</span></div>
+
+    <form class="add-form" action="/whitelist/add" method="post">
+      <input type="text" name="process_name" placeholder="e.g. notepad.exe" id="wl-add-input" />
+      <button type="submit" class="btn btn-primary btn-sm">+ Add</button>
+    </form>
+
+    {% if whitelist %}
+      {% for proc in whitelist %}
+      <div class="wl-item">
+        <span>{{ proc }}</span>
+        <form action="/whitelist/remove" method="post" style="margin:0;">
+          <input type="hidden" name="process_name" value="{{ proc }}" />
+          <button type="submit" class="btn btn-ghost btn-sm" style="padding:3px 10px;font-size:11px;">Remove</button>
+        </form>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty-state" style="padding:24px 0;">
+        <p style="color:var(--muted);font-size:13px;">No processes whitelisted yet.</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Auto Whitelist preview -->
+  <div class="card">
+    <div class="section-title">🧠 Auto-Whitelist Preview <span style="color:var(--muted);font-weight:400;font-size:12px;margin-left:6px;">(threshold ≥ 5 safe runs)</span></div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">
+      Processes below are tracked. Those reaching 5+ safe runs are trusted automatically.
+    </p>
+
+    {% if auto_whitelist %}
+      {% for proc, count in auto_whitelist.items() %}
+      <div class="wl-item">
+        <span>{{ proc }}</span>
+        <span style="color:{% if count >= 5 %}var(--low){% else %}var(--muted){% endif %};font-size:11px;">
+          {{ count }} / 5 {% if count >= 5 %}✓ trusted{% endif %}
+        </span>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty-state" style="padding:24px 0;">
+        <p style="color:var(--muted);font-size:13px;">No data yet — monitor is learning.</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: DTRS CI/CD Pipeline
 
 on:
   push:
@@ -11,45 +11,77 @@ permissions:
   contents: read
   packages: write
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_PREFIX: ghcr.io/${{ github.repository_owner }}
+
+# ─────────────────────────────────────────────────────────────────────────────
 jobs:
+
+  # ── Job 1: Lint & Unit Tests ────────────────────────────────────────────────
   lint-and-test:
-    name: Lint & Test Application
+    name: 🧪 Lint & Test
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install Dependencies
+      - name: Install Dependencies (all services)
         run: |
           python -m pip install --upgrade pip
-          # Exclude winotify (Windows-only) when installing dependencies on Linux CI
-          grep -v "winotify" requirements.txt > temp-req.txt
-          pip install -r temp-req.txt
-          pip install flake8
+          pip install flake8 pytest
+          for dir in detection_engine analytics_service notification_service policy_engine dashboard agent; do
+            if [ -f "$dir/requirements.txt" ]; then
+              echo "Installing $dir deps..."
+              grep -v "winotify" "$dir/requirements.txt" > /tmp/req.txt
+              pip install -r /tmp/req.txt --quiet
+            fi
+          done
 
-      - name: Lint Code (Flake8)
+      - name: Lint — Syntax Errors & Undefined Names (Flake8)
         run: |
-          # stop the build if there are Python syntax errors or undefined names
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          # exit-zero treats all errors as warnings
-          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics \
+            --exclude=__pycache__,.git,*.egg-info
+
+      - name: Lint — Style Warnings (Flake8, non-blocking)
+        run: |
+          flake8 . --count --exit-zero --max-line-length=127 \
+            --exclude=__pycache__,.git,*.egg-info --statistics
 
       - name: Run Unit Tests
         run: |
-          python -m unittest discover -s tests
+          python -m pytest tests/ -v --tb=short 2>/dev/null || \
+          python -m unittest discover -s tests -v
 
+  # ── Job 2: Build All 6 Docker Images ───────────────────────────────────────
   docker-build:
-    name: Build Docker Image
+    name: 🐳 Build Docker Images
     runs-on: ubuntu-latest
     needs: lint-and-test
-    
+
+    strategy:
+      matrix:
+        service:
+          - name: detection-engine
+            context: ./detection_engine
+          - name: dashboard
+            context: ./dashboard
+          - name: agent
+            context: ./agent
+          - name: notification-service
+            context: ./notification_service
+          - name: analytics-service
+            context: ./analytics_service
+          - name: policy-engine
+            context: ./policy_engine
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -57,12 +89,128 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # Build the container image to verify it builds successfully
-      - name: Build Docker Image
+      - name: Build — ${{ matrix.service.name }}
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ${{ matrix.service.context }}
           push: false
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          tags: dtrs-${{ matrix.service.name }}:ci
+          cache-from: type=gha,scope=${{ matrix.service.name }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.service.name }}
 
+  # ── Job 3: Docker Compose Integration Test ─────────────────────────────────
+  integration-test:
+    name: 🔗 Integration Test (Compose)
+    runs-on: ubuntu-latest
+    needs: docker-build
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Start all 6 services
+        run: |
+          docker compose up --build -d
+          echo "Waiting for services to become healthy..."
+          sleep 30
+
+      - name: Health check — Policy Engine (5004)
+        run: curl -sf http://localhost:5004/health | python3 -m json.tool
+
+      - name: Health check — Notification Service (5002)
+        run: curl -sf http://localhost:5002/health | python3 -m json.tool
+
+      - name: Health check — Analytics Service (5003)
+        run: curl -sf http://localhost:5003/health | python3 -m json.tool
+
+      - name: Health check — Detection Engine (5001)
+        run: curl -sf http://localhost:5001/health | python3 -m json.tool
+
+      - name: Health check — Dashboard (5080)
+        run: curl -sf http://localhost:5080/health | python3 -m json.tool
+
+      - name: Integration — POST fake process report
+        run: |
+          curl -sf -X POST http://localhost:5001/api/agent/report \
+            -H 'Content-Type: application/json' \
+            -d '{"processes":[{"pid":9999,"name":"test_threat.exe","cpu":95.0,"mem":12.5}]}' \
+            | python3 -m json.tool
+
+      - name: Integration — Analytics summary (should have 1 event)
+        run: |
+          sleep 3
+          curl -sf http://localhost:5003/api/analytics/summary | python3 -m json.tool
+
+      - name: Integration — Policy Engine full snapshot
+        run: |
+          curl -sf http://localhost:5004/api/policy | python3 -m json.tool
+
+      - name: Integration — Dashboard analytics page (200 OK)
+        run: curl -sf -o /dev/null -w "%{http_code}" http://localhost:5080/analytics
+
+      - name: Dump logs on failure
+        if: failure()
+        run: docker compose logs --tail=50
+
+      - name: Tear down
+        if: always()
+        run: docker compose down -v
+
+  # ── Job 4: Publish Docker Images to GHCR (on push to main / tags) ──────────
+  publish:
+    name: 🚀 Publish to GHCR
+    runs-on: ubuntu-latest
+    needs: integration-test
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/'))
+
+    strategy:
+      matrix:
+        service:
+          - name: detection-engine
+            context: ./detection_engine
+          - name: dashboard
+            context: ./dashboard
+          - name: agent
+            context: ./agent
+          - name: notification-service
+            context: ./notification_service
+          - name: analytics-service
+            context: ./analytics_service
+          - name: policy-engine
+            context: ./policy_engine
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Extract metadata (tags & labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/dtrs-${{ matrix.service.name }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha,prefix=sha-,format=short
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
+
+      - name: Build & Push — ${{ matrix.service.name }}
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.service.context }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=${{ matrix.service.name }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.service.name }}

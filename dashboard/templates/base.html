@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}DTRS{% endblock %} — Threat Response System</title>
+  <meta name="description" content="Adaptive Dynamic Threat Response System – real-time process monitoring and alert-based control." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Tokens ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0f14;
+      --surface:   #141720;
+      --surface2:  #1b1f2e;
+      --border:    #252a3a;
+      --text:      #e2e6f0;
+      --muted:     #6b728a;
+      --accent:    #5b8af4;
+      --accent-g:  linear-gradient(135deg, #5b8af4 0%, #a78bfa 100%);
+      --low:       #22c55e;
+      --medium:    #f59e0b;
+      --high:      #ef4444;
+      --high-bg:   rgba(239,68,68,.10);
+      --medium-bg: rgba(245,158,11,.10);
+      --low-bg:    rgba(34,197,94,.10);
+      --radius:    10px;
+      --shadow:    0 4px 24px rgba(0,0,0,.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Sidebar ────────────────────────────────────────────────────────── */
+    .sidebar {
+      width: 220px;
+      min-height: 100vh;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 28px 0 20px;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      z-index: 100;
+    }
+
+    .sidebar-logo {
+      padding: 0 20px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-logo .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--accent-g);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; margin-bottom: 10px;
+    }
+    .sidebar-logo h2 {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sidebar-logo span {
+      font-size: 15px; font-weight: 600;
+      color: var(--text); display: block; margin-top: 2px;
+    }
+
+    .nav { padding: 20px 12px; flex: 1; }
+    .nav a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 500;
+      color: var(--muted);
+      transition: all .2s;
+      margin-bottom: 2px;
+      position: relative;
+    }
+    .nav a:hover   { background: var(--surface2); color: var(--text); }
+    .nav a.active  { background: rgba(91,138,244,.12); color: var(--accent); }
+    .nav a .icon   { font-size: 16px; width: 20px; text-align: center; }
+
+    .alert-badge {
+      margin-left: auto;
+      background: var(--high);
+      color: #fff;
+      font-size: 10px; font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 20px;
+      min-width: 18px; text-align: center;
+    }
+
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 11px; color: var(--muted);
+    }
+    .status-dot {
+      display: inline-block; width: 7px; height: 7px;
+      background: var(--low); border-radius: 50%;
+      margin-right: 6px; animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50%      { opacity: .4; }
+    }
+
+    /* ── Main Content ────────────────────────────────────────────────────── */
+    .main {
+      margin-left: 220px;
+      flex: 1;
+      padding: 32px 36px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .page-header h1 {
+      font-size: 22px; font-weight: 700;
+      background: var(--accent-g); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-header p {
+      font-size: 13px; color: var(--muted); margin-top: 3px;
+    }
+
+    /* ── Cards ───────────────────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .stat-card .label {
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--muted); font-weight: 600;
+    }
+    .stat-card .value {
+      font-size: 28px; font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .stat-card.high   .value { color: var(--high); }
+    .stat-card.medium .value { color: var(--medium); }
+    .stat-card.low    .value { color: var(--low); }
+    .stat-card.total  .value { color: var(--accent); }
+
+    /* ── Table ───────────────────────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead th {
+      text-align: left; padding: 10px 14px;
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--muted); font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+    tbody tr {
+      border-bottom: 1px solid rgba(37,42,58,.6);
+      transition: background .15s;
+    }
+    tbody tr:hover { background: var(--surface2); }
+    tbody td {
+      padding: 11px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+    }
+    tbody td.pname { font-family: 'Inter', sans-serif; font-weight: 500; }
+
+    /* ── Risk Badges ─────────────────────────────────────────────────────── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 9px; border-radius: 20px;
+      font-size: 11px; font-weight: 600; letter-spacing: .04em;
+    }
+    .badge::before {
+      content: ""; width: 6px; height: 6px;
+      border-radius: 50%; flex-shrink: 0;
+    }
+    .badge.HIGH   { background: var(--high-bg);   color: var(--high);   }
+    .badge.HIGH::before   { background: var(--high); }
+    .badge.MEDIUM { background: var(--medium-bg); color: var(--medium); }
+    .badge.MEDIUM::before { background: var(--medium); }
+    .badge.LOW    { background: var(--low-bg);    color: var(--low);    }
+    .badge.LOW::before    { background: var(--low); }
+
+    /* ── Buttons ─────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 7px;
+      font-size: 13px; font-weight: 500;
+      border: none; cursor: pointer;
+      transition: all .18s; font-family: 'Inter', sans-serif;
+    }
+    .btn-danger  { background: rgba(239,68,68,.15); color: var(--high); border: 1px solid rgba(239,68,68,.3); }
+    .btn-danger:hover  { background: var(--high); color: #fff; }
+    .btn-ghost   { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+    .btn-ghost:hover   { color: var(--text); border-color: var(--muted); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { filter: brightness(1.12); }
+    .btn-sm { padding: 5px 11px; font-size: 12px; }
+
+    /* ── Flash messages ──────────────────────────────────────────────────── */
+    .flash-list { list-style: none; margin-bottom: 18px; }
+    .flash-list li {
+      padding: 10px 16px; border-radius: 7px;
+      font-size: 13px; margin-bottom: 6px;
+    }
+    .flash-list li.success { background: rgba(34,197,94,.1); color: var(--low); border: 1px solid rgba(34,197,94,.2); }
+    .flash-list li.error   { background: var(--high-bg); color: var(--high); border: 1px solid rgba(239,68,68,.2); }
+
+    /* ── Toast ───────────────────────────────────────────────────────────── */
+    #toast {
+      position: fixed; bottom: 28px; right: 28px;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text); padding: 12px 18px;
+      border-radius: 9px; font-size: 13px;
+      box-shadow: var(--shadow);
+      opacity: 0; transform: translateY(10px);
+      transition: all .3s;
+      pointer-events: none; z-index: 999;
+      max-width: 320px;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ── Global Alert Overlay ────────────────────────────────────────────── */
+    #global-alert-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(3px);
+      z-index: 900;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    #global-alert-backdrop.visible {
+      opacity: 1; pointer-events: all;
+    }
+
+    #global-alert-panel {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -44%) scale(.94);
+      z-index: 901;
+      width: min(520px, calc(100vw - 48px));
+      background: var(--surface);
+      border: 1px solid rgba(239,68,68,.45);
+      border-radius: 14px;
+      box-shadow: 0 0 0 1px rgba(239,68,68,.15), 0 24px 64px rgba(0,0,0,.7);
+      padding: 26px 28px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s ease, transform .35s ease;
+      animation: none;
+    }
+    #global-alert-panel.visible {
+      opacity: 1; pointer-events: all;
+      transform: translate(-50%, -50%) scale(1);
+      animation: alertPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes alertPulse {
+      0%,100% { box-shadow: 0 0 0 1px rgba(239,68,68,.15), 0 24px 64px rgba(0,0,0,.7); }
+      50%      { box-shadow: 0 0 0 3px rgba(239,68,68,.45), 0 24px 64px rgba(0,0,0,.7); }
+    }
+
+    .gap-panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .gap-panel-header h2 {
+      font-size: 16px; font-weight: 700;
+      color: var(--high);
+      display: flex; align-items: center; gap: 9px;
+    }
+    .gap-panel-header h2 .pulse-icon {
+      display: inline-block;
+      animation: iconPulse 1s ease-in-out infinite;
+    }
+    @keyframes iconPulse {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.25); }
+    }
+    .gap-dismiss {
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 18px;
+      line-height: 1; padding: 2px 6px; border-radius: 5px;
+      transition: color .15s, background .15s;
+    }
+    .gap-dismiss:hover { color: var(--text); background: var(--surface2); }
+
+    .gap-alert-item {
+      background: var(--surface2);
+      border: 1px solid rgba(239,68,68,.2);
+      border-left: 3px solid var(--high);
+      border-radius: 8px;
+      padding: 13px 16px;
+      margin-bottom: 10px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+      animation: slideIn .3s ease;
+    }
+    .gap-alert-item .proc-name {
+      font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px;
+    }
+    .gap-alert-item .meta {
+      font-size: 11.5px; color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      display: flex; gap: 12px;
+    }
+    .gap-alert-item .meta strong { color: var(--text); }
+    .gap-alert-actions { display: flex; gap: 7px; flex-shrink: 0; }
+
+    .gap-footer {
+      margin-top: 18px; padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .gap-footer a {
+      font-size: 12.5px; color: var(--accent);
+      text-decoration: underline; text-underline-offset: 2px;
+    }
+    .gap-footer a:hover { color: #a78bfa; }
+
+    /* ── Misc ────────────────────────────────────────────────────────────── */
+    .section-title {
+      font-size: 14px; font-weight: 600; color: var(--text);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+    .empty-state {
+      text-align: center; padding: 48px 20px;
+      color: var(--muted); font-size: 14px;
+    }
+    .empty-state .icon { font-size: 36px; margin-bottom: 10px; }
+
+    input[type="text"] {
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text); padding: 8px 14px; border-radius: 7px;
+      font-size: 13px; font-family: 'Inter', sans-serif;
+      outline: none; transition: border .18s; width: 260px;
+    }
+    input[type="text"]:focus { border-color: var(--accent); }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+<!-- ── Sidebar ────────────────────────────────────────────────────────────── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">🛡️</div>
+    <h2>DTRS v2.0</h2>
+    <span>Threat Response</span>
+  </div>
+
+  <nav class="nav">
+    <a href="/" id="nav-home" class="{% if request.endpoint == 'home' %}active{% endif %}">
+      <span class="icon">📊</span> Dashboard
+    </a>
+    <a href="/alerts" id="nav-alerts" class="{% if request.endpoint == 'alerts' %}active{% endif %}">
+      <span class="icon">🚨</span> Alerts
+      {% if alert_count is defined and alert_count > 0 %}
+        <span class="alert-badge">{{ alert_count }}</span>
+      {% endif %}
+    </a>
+    <a href="/logs" id="nav-logs" class="{% if request.endpoint == 'logs' %}active{% endif %}">
+      <span class="icon">📋</span> Logs
+    </a>
+    <a href="/whitelist" id="nav-wl" class="{% if request.endpoint == 'whitelist' %}active{% endif %}">
+      <span class="icon">✅</span> Whitelist
+    </a>
+    <a href="/auto-whitelist" id="nav-awl" class="{% if request.endpoint == 'auto_whitelist' %}active{% endif %}">
+      <span class="icon">🧠</span> Auto-Whitelist
+    </a>
+
+    <div style="height:1px;background:var(--border);margin:14px 12px"></div>
+
+    <a href="/analytics" id="nav-analytics" class="{% if request.endpoint == 'analytics' %}active{% endif %}">
+      <span class="icon">📈</span> Analytics
+    </a>
+    <a href="/policy" id="nav-policy" class="{% if request.endpoint == 'policy' %}active{% endif %}">
+      <span class="icon">⚙️</span> Policy Engine
+    </a>
+    <a href="/notifications" id="nav-notif" class="{% if request.endpoint == 'notifications' %}active{% endif %}">
+      <span class="icon">🔔</span> Notifications
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <span class="status-dot"></span> Monitor active
+  </div>
+</aside>
+
+<!-- ── Main ───────────────────────────────────────────────────────────────── -->
+<main class="main">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flash-list">
+        {% for cat, msg in messages %}
+          <li class="{{ cat }}">{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ── Global Alert Overlay ──────────────────────────────────────────────── -->
+<div id="global-alert-backdrop"></div>
+<div id="global-alert-panel" role="alertdialog" aria-modal="true" aria-labelledby="gap-title">
+  <div class="gap-panel-header">
+    <h2 id="gap-title"><span class="pulse-icon">🚨</span> HIGH-Risk Alert Detected</h2>
+    <button class="gap-dismiss" id="gap-close-btn" title="Dismiss">✕</button>
+  </div>
+  <div id="gap-alert-list"><!-- populated by JS --></div>
+  <div class="gap-footer">
+    <span style="font-size:12px;color:var(--muted)">System will NOT auto-terminate</span>
+    <a href="/alerts">View all alerts →</a>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+  function showToast(msg, ok) {
+    const t = document.getElementById("toast");
+    t.textContent = (ok ? "✅ " : "⚠️ ") + msg;
+    t.style.borderColor = ok ? "rgba(34,197,94,.4)" : "rgba(239,68,68,.4)";
+    t.classList.add("show");
+    setTimeout(() => t.classList.remove("show"), 3200);
+  }
+
+  /* ── Global Alert Overlay ──────────────────────────────────────────────── */
+  (function () {
+    const backdrop  = document.getElementById("global-alert-backdrop");
+    const panel     = document.getElementById("global-alert-panel");
+    const closeBtn  = document.getElementById("gap-close-btn");
+    const alertList = document.getElementById("gap-alert-list");
+
+    let dismissed   = false;   // user manually closed this wave
+    let shownPids   = new Set();
+
+    function openPanel()  { backdrop.classList.add("visible"); panel.classList.add("visible"); }
+    function closePanel() { backdrop.classList.remove("visible"); panel.classList.remove("visible"); }
+
+    closeBtn.addEventListener("click", () => { dismissed = true; closePanel(); });
+    backdrop.addEventListener("click", () => { dismissed = true; closePanel(); });
+
+    function buildCard(a) {
+      return `
+        <div class="gap-alert-item" id="gap-ac-${a.pid}">
+          <div>
+            <div class="proc-name">🔴 ${a.name}</div>
+            <div class="meta">
+              <span>PID <strong>${a.pid}</strong></span>
+              <span>CPU <strong>${a.cpu}%</strong></span>
+              <span>Mem <strong>${a.mem}%</strong></span>
+            </div>
+          </div>
+          <div class="gap-alert-actions">
+            <button class="btn btn-danger btn-sm"
+              onclick="gapAction(${a.pid},'terminate','${a.name}',${a.cpu})">✅ Terminate</button>
+            <button class="btn btn-ghost btn-sm"
+              onclick="gapAction(${a.pid},'ignore','${a.name}',${a.cpu})">❌ Ignore</button>
+          </div>
+        </div>`;
+    }
+
+    window.gapAction = async function(pid, action, name, cpu) {
+      const card = document.getElementById("gap-ac-" + pid);
+      if (card) card.style.opacity = "0.4";
+      try {
+        const res  = await fetch("/action", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pid, action, name, cpu })
+        });
+        const data = await res.json();
+        showToast(data.message, data.success);
+        shownPids.delete(String(pid));
+        if (card) card.remove();
+        if (!alertList.querySelector(".gap-alert-item")) closePanel();
+      } catch(e) {
+        showToast("Request failed: " + e, false);
+        if (card) card.style.opacity = "1";
+      }
+    };
+
+    async function pollGlobal() {
+      try {
+        const res    = await fetch("/api/alerts");
+        const data   = await res.json();
+        const alerts = data.alerts || [];
+
+        const livePids = new Set(alerts.map(a => String(a.pid)));
+
+        // Remove stale cards from overlay
+        shownPids.forEach(p => {
+          if (!livePids.has(p)) {
+            const el = document.getElementById("gap-ac-" + p);
+            if (el) el.remove();
+            shownPids.delete(p);
+          }
+        });
+
+        // Detect genuinely new alerts
+        const newAlerts = alerts.filter(a => !shownPids.has(String(a.pid)));
+
+        if (newAlerts.length) {
+          dismissed = false;   // new threat → re-open even if previously dismissed
+          newAlerts.forEach(a => {
+            shownPids.add(String(a.pid));
+            alertList.insertAdjacentHTML("beforeend", buildCard(a));
+          });
+        }
+
+        // Close if no active alerts remain
+        if (!shownPids.size) { closePanel(); return; }
+
+        // Open only if not manually dismissed for this wave
+        if (!dismissed) openPanel();
+
+        // Update sidebar badge everywhere
+        const badge = document.querySelector(".alert-badge");
+        if (badge) badge.textContent = alerts.length;
+
+      } catch(e) { console.warn("global poll failed", e); }
+    }
+
+    pollGlobal();                        // immediate check
+    setInterval(pollGlobal, 5000);       // then every 5 s
+  })();
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

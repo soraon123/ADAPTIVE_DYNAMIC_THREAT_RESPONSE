@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Logs{% endblock %}
+
+{% block head %}
+<style>
+  .log-filters {
+    display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; align-items: center;
+  }
+  .log-filters select, .log-filters input {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); padding: 6px 12px; border-radius: 7px;
+    font-size: 12px; font-family: 'Inter', sans-serif; outline: none;
+  }
+  .log-filters select:focus, .log-filters input:focus { border-color: var(--accent); }
+
+  .action-tag {
+    display: inline-block;
+    padding: 2px 9px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  }
+  .action-tag.terminated   { background: rgba(239,68,68,.15); color: var(--high); }
+  .action-tag.ignored      { background: rgba(107,114,138,.15); color: var(--muted); }
+  .action-tag.alert        { background: rgba(239,68,68,.10); color: #f87171; }
+  .action-tag.logged       { background: rgba(245,158,11,.10); color: var(--medium); }
+  .action-tag.already-gone { background: rgba(107,114,138,.10); color: var(--muted); }
+  .action-tag.access-denied{ background: rgba(239,68,68,.12); color: #fb923c; }
+
+  #log-count { font-size: 12px; color: var(--muted); margin-left: auto; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>Event Logs</h1>
+    <p>Full audit trail of all detected and actioned events</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="log-filters">
+    <input type="text" id="log-search" placeholder="Search process name…" oninput="filterLogs()" style="width:200px;" />
+    <select id="log-risk" onchange="filterLogs()">
+      <option value="">All Risks</option>
+      <option>HIGH</option>
+      <option>MEDIUM</option>
+      <option>LOW</option>
+    </select>
+    <select id="log-action" onchange="filterLogs()">
+      <option value="">All Actions</option>
+      <option>terminated</option>
+      <option>ignored</option>
+      <option>alert</option>
+      <option>logged</option>
+      <option>access-denied</option>
+    </select>
+    <span id="log-count"></span>
+  </div>
+
+  <div class="table-wrap">
+    <table id="log-table">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Process</th>
+          <th>CPU %</th>
+          <th>Risk</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="log-body">
+        {% if logs %}
+          {% for log in logs %}
+          <tr data-proc="{{ log.process|lower }}" data-risk="{{ log.risk }}" data-action="{{ log.action }}">
+            <td class="mono" style="font-size:11.5px;color:var(--muted);">{{ log.timestamp }}</td>
+            <td class="pname">{{ log.process }}</td>
+            <td class="mono">{{ log.cpu }}%</td>
+            <td><span class="badge {{ log.risk }}">{{ log.risk }}</span></td>
+            <td><span class="action-tag {{ log.action }}">{{ log.action }}</span></td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr><td colspan="5" style="text-align:center;color:var(--muted);padding:30px;">No logs yet.</td></tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function filterLogs() {
+    const search = document.getElementById("log-search").value.toLowerCase();
+    const risk   = document.getElementById("log-risk").value;
+    const action = document.getElementById("log-action").value;
+    const rows   = document.querySelectorAll("#log-body tr[data-proc]");
+    let visible  = 0;
+    rows.forEach(r => {
+      const matchProc   = !search || r.dataset.proc.includes(search);
+      const matchRisk   = !risk   || r.dataset.risk === risk;
+      const matchAction = !action || r.dataset.action === action;
+      const show = matchProc && matchRisk && matchAction;
+      r.style.display = show ? "" : "none";
+      if (show) visible++;
+    });
+    document.getElementById("log-count").textContent = `${visible} entr${visible===1?"y":"ies"}`;
+  }
+  filterLogs();
+</script>
+{% endblock %}

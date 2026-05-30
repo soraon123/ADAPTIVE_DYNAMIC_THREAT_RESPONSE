@@ -1,10 +1,131 @@
 version: '3.8'
 
 services:
-  dtrs:
-    build: .
-    container_name: dtrs_monitor
-    pid: host  # Crucial: allows the container to monitor host processes
+
+  # ── Microservice 1: Detection Engine ─────────────────────────────────────
+  # The brain: risk evaluation, state management, action queuing, log storage.
+  # Fetches policy from Policy Engine; fires webhooks via Notification Service.
+  detection-engine:
+    build: ./detection_engine
+    container_name: dtrs_detection_engine
     ports:
-      - "5000:5000"
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      - DATA_DIR=/app/data
+      - POLICY_ENGINE_URL=http://policy-engine:5004
+      - NOTIFICATION_SERVICE_URL=http://notification-service:5002
+    volumes:
+      - dtrs_data:/app/data
+    depends_on:
+      policy-engine:
+        condition: service_healthy
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5001/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── Microservice 2: Web Dashboard ─────────────────────────────────────────
+  # Stateless frontend: serves the web UI and proxies requests to all services.
+  dashboard:
+    build: ./dashboard
+    container_name: dtrs_dashboard
+    ports:
+      - "5080:5000"
+    environment:
+      - PORT=5000
+      - DETECTION_ENGINE_URL=http://detection-engine:5001
+      - ANALYTICS_SERVICE_URL=http://analytics-service:5003
+      - POLICY_ENGINE_URL=http://policy-engine:5004
+      - NOTIFICATION_SERVICE_URL=http://notification-service:5002
+      - FLASK_SECRET=dtrs-dashboard-secret-2025
+    depends_on:
+      detection-engine:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── Microservice 3: Agent ─────────────────────────────────────────────────
+  # Local process collector: scans host processes and sends telemetry.
+  # 'pid: host' allows the container to see and terminate host-level processes (Linux only).
+  agent:
+    build: ./agent
+    container_name: dtrs_agent
+    pid: host
+    environment:
+      - DETECTION_ENGINE_URL=http://detection-engine:5001
+      - DASHBOARD_URL=http://localhost:5000
+      - SCAN_INTERVAL=3
+      - ACTION_INTERVAL=2
+    depends_on:
+      detection-engine:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ── Microservice 4: Notification Service ──────────────────────────────────
+  # Webhook dispatch: forwards HIGH-risk alerts to Slack, Discord, Teams, etc.
+  notification-service:
+    build: ./notification_service
+    container_name: dtrs_notification_service
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+      - DATA_DIR=/app/data
+    volumes:
+      - dtrs_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5002/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── Microservice 5: Analytics Service ─────────────────────────────────────
+  # Reads shared logs and provides threat intelligence: trends, heatmaps, top offenders.
+  analytics-service:
+    build: ./analytics_service
+    container_name: dtrs_analytics_service
+    ports:
+      - "5003:5003"
+    environment:
+      - PORT=5003
+      - DATA_DIR=/app/data
+    volumes:
+      - dtrs_data:/app/data    # reads logs.json written by Detection Engine
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5003/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── Microservice 6: Policy Engine ─────────────────────────────────────────
+  # Runtime rule configuration: CPU thresholds, per-process rules, cooldown settings.
+  # Detection Engine polls this every 30 seconds to pick up changes without restart.
+  policy-engine:
+    build: ./policy_engine
+    container_name: dtrs_policy_engine
+    ports:
+      - "5004:5004"
+    environment:
+      - PORT=5004
+      - DATA_DIR=/app/data
+    volumes:
+      - dtrs_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5004/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  dtrs_data:
+    driver: local

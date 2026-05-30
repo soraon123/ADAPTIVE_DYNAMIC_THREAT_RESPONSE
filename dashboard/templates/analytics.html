@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+{% block title %}Analytics{% endblock %}
+
+{% block head %}
+<style>
+  /* ── Analytics-specific styles ────────────────────────────────────────── */
+  .an-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .an-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  @media (max-width: 900px) { .an-grid, .an-grid-3 { grid-template-columns: 1fr; } }
+
+  /* ── Trend Chart ─────────────────────────────────────────────────────── */
+  .chart-wrap { position: relative; height: 160px; }
+  .chart-svg { width: 100%; height: 100%; overflow: visible; }
+  .chart-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+  .chart-area { fill: url(#areaGrad); }
+  .chart-dot  { fill: var(--accent); r: 3; }
+
+  /* ── Top processes bar ───────────────────────────────────────────────── */
+  .proc-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .proc-row .proc-label { width: 160px; font-size: 12px; font-family: 'JetBrains Mono', monospace; truncate; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--text); }
+  .proc-bar-track { flex: 1; height: 8px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
+  .proc-bar-fill  { height: 100%; border-radius: 99px; background: var(--accent-g); transition: width .5s; }
+  .proc-score { font-size: 11px; color: var(--muted); width: 32px; text-align: right; }
+
+  /* ── Heatmap ─────────────────────────────────────────────────────────── */
+  .heatmap-wrap { overflow-x: auto; }
+  .heatmap-grid { display: grid; gap: 3px; }
+  .hm-cell { width: 18px; height: 18px; border-radius: 3px; background: var(--surface2); transition: background .2s; cursor: default; position: relative; }
+  .hm-cell:hover::after {
+    content: attr(data-tip);
+    position: absolute; bottom: calc(100% + 5px); left: 50%; transform: translateX(-50%);
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); font-size: 11px; padding: 4px 8px; border-radius: 5px;
+    white-space: nowrap; pointer-events: none; z-index: 10;
+  }
+  .hm-day-label { font-size: 10px; color: var(--muted); width: 28px; flex-shrink: 0; display: flex; align-items: center; }
+  .hm-hour-label { font-size: 9px; color: var(--muted); text-align: center; }
+  .hm-row { display: flex; align-items: center; gap: 3px; }
+
+  /* ── Donut chart ─────────────────────────────────────────────────────── */
+  .donut-wrap { display: flex; align-items: center; gap: 24px; }
+  .donut-svg { width: 120px; height: 120px; flex-shrink: 0; }
+  .donut-legend { display: flex; flex-direction: column; gap: 8px; }
+  .donut-legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .donut-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>📈 Analytics</h1>
+    <p>Threat intelligence, trends, and activity patterns</p>
+  </div>
+  <button class="btn btn-ghost btn-sm" onclick="location.reload()">↻ Refresh</button>
+</div>
+
+<!-- ── Summary Stats ───────────────────────────────────────────────────────── -->
+<div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr))">
+  <div class="stat-card total">
+    <span class="label">Total Events</span>
+    <span class="value">{{ summary.get('total_events', 0) }}</span>
+  </div>
+  <div class="stat-card high">
+    <span class="label">Alerts</span>
+    <span class="value">{{ summary.get('total_alerts', 0) }}</span>
+  </div>
+  <div class="stat-card" style="--v-color: #a78bfa">
+    <span class="label">Terminated</span>
+    <span class="value" style="color:#a78bfa">{{ summary.get('total_terminated', 0) }}</span>
+  </div>
+  <div class="stat-card medium">
+    <span class="label">Logged</span>
+    <span class="value">{{ summary.get('total_logged', 0) }}</span>
+  </div>
+  <div class="stat-card low">
+    <span class="label">Alert Rate</span>
+    <span class="value">{{ summary.get('alert_rate', 0) }}%</span>
+  </div>
+  {% if summary.get('last_event_at') %}
+  <div class="stat-card">
+    <span class="label">Last Event</span>
+    <span class="value" style="font-size:13px; color:var(--muted); font-family:'Inter',sans-serif; padding-top:6px">{{ summary.last_event_at }}</span>
+  </div>
+  {% endif %}
+</div>
+
+<div class="an-grid">
+  <!-- ── CPU Trend Chart ───────────────────────────────────────────────────── -->
+  <div class="card">
+    <div class="section-title">⚡ CPU Spike Trend (last 24h)</div>
+    {% if trends %}
+    <div class="chart-wrap">
+      <svg class="chart-svg" id="trend-svg" viewBox="0 0 600 160" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#5b8af4" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#5b8af4" stop-opacity="0.00"/>
+          </linearGradient>
+        </defs>
+        <!-- Rendered by JS below -->
+      </svg>
+    </div>
+    <script>
+      (function(){
+        const data = {{ trends | tojson }};
+        if (!data.length) return;
+        const svg = document.getElementById('trend-svg');
+        const W = 600, H = 160, pad = 12;
+        const maxCpu = Math.max(...data.map(d => d.max_cpu), 10);
+        const xStep = (W - pad*2) / (data.length - 1 || 1);
+        const yScale = v => H - pad - (v / maxCpu) * (H - pad*2);
+
+        const pts = data.map((d, i) => [pad + i*xStep, yScale(d.avg_cpu)]);
+
+        // Grid lines
+        [25, 50, 75, 100].forEach(pct => {
+          if (pct > maxCpu) return;
+          const y = yScale(pct);
+          const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+          line.setAttribute('x1', pad); line.setAttribute('x2', W-pad);
+          line.setAttribute('y1', y);   line.setAttribute('y2', y);
+          line.setAttribute('stroke', 'rgba(255,255,255,0.05)');
+          line.setAttribute('stroke-dasharray','3,4');
+          svg.appendChild(line);
+          const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
+          txt.setAttribute('x', 0); txt.setAttribute('y', y+4);
+          txt.setAttribute('fill','#6b728a'); txt.setAttribute('font-size','8');
+          txt.textContent = pct + '%';
+          svg.appendChild(txt);
+        });
+
+        // Area
+        const areaD = `M${pts[0][0]},${H-pad} ` +
+          pts.map(p=>`L${p[0]},${p[1]}`).join(' ') +
+          ` L${pts[pts.length-1][0]},${H-pad} Z`;
+        const area = document.createElementNS('http://www.w3.org/2000/svg','path');
+        area.setAttribute('d', areaD); area.setAttribute('class','chart-area');
+        svg.appendChild(area);
+
+        // Line
+        const lineD = `M${pts.map(p=>p.join(',')).join(' L')}`;
+        const line = document.createElementNS('http://www.w3.org/2000/svg','path');
+        line.setAttribute('d', lineD); line.setAttribute('class','chart-line');
+        svg.appendChild(line);
+
+        // Dots + tooltips (every 4th)
+        data.forEach((d, i) => {
+          if (i % 4 !== 0 && i !== data.length-1) return;
+          const [cx, cy] = pts[i];
+          const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+          c.setAttribute('cx', cx); c.setAttribute('cy', cy);
+          c.setAttribute('r', 3); c.setAttribute('fill','#5b8af4');
+          c.setAttribute('data-tip', `${d.bucket} · avg ${d.avg_cpu}% · ${d.event_count} events`);
+          svg.appendChild(c);
+
+          const lbl = document.createElementNS('http://www.w3.org/2000/svg','text');
+          lbl.setAttribute('x', cx); lbl.setAttribute('y', H-2);
+          lbl.setAttribute('text-anchor','middle');
+          lbl.setAttribute('fill','#6b728a'); lbl.setAttribute('font-size','8');
+          lbl.textContent = d.bucket;
+          svg.appendChild(lbl);
+        });
+      })();
+    </script>
+    {% else %}
+    <div class="empty-state"><div class="icon">📊</div>No trend data yet</div>
+    {% endif %}
+  </div>
+
+  <!-- ── Risk Distribution Donut ───────────────────────────────────────────── -->
+  <div class="card">
+    <div class="section-title">🎯 Risk Distribution</div>
+    {% set high = risk_dist.get('HIGH', 0) %}
+    {% set med  = risk_dist.get('MEDIUM', 0) %}
+    {% set low  = risk_dist.get('LOW', 0) %}
+    {% set total_rd = high + med + low %}
+    {% if total_rd > 0 %}
+    <div class="donut-wrap">
+      <svg class="donut-svg" viewBox="0 0 120 120" id="donut-svg">
+        <!-- Rendered by JS -->
+      </svg>
+      <div class="donut-legend">
+        <div class="donut-legend-item">
+          <div class="donut-dot" style="background:var(--high)"></div>
+          <span>HIGH &nbsp;<strong>{{ high }}</strong></span>
+        </div>
+        <div class="donut-legend-item">
+          <div class="donut-dot" style="background:var(--medium)"></div>
+          <span>MEDIUM <strong>{{ med }}</strong></span>
+        </div>
+        <div class="donut-legend-item">
+          <div class="donut-dot" style="background:var(--low)"></div>
+          <span>LOW &nbsp;<strong>{{ low }}</strong></span>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function(){
+        const data = [{v:{{high}},c:'#ef4444'},{v:{{med}},c:'#f59e0b'},{v:{{low}},c:'#22c55e'}];
+        const total = data.reduce((s,d)=>s+d.v, 0);
+        const svg = document.getElementById('donut-svg');
+        const cx=60, cy=60, r=46, ir=30;
+        let startAngle = -Math.PI/2;
+        data.forEach(seg => {
+          if (!seg.v) return;
+          const angle = (seg.v/total) * 2*Math.PI;
+          const endAngle = startAngle + angle;
+          const large = angle > Math.PI ? 1 : 0;
+          const x1=cx+r*Math.cos(startAngle), y1=cy+r*Math.sin(startAngle);
+          const x2=cx+r*Math.cos(endAngle),   y2=cy+r*Math.sin(endAngle);
+          const ix1=cx+ir*Math.cos(startAngle),iy1=cy+ir*Math.sin(startAngle);
+          const ix2=cx+ir*Math.cos(endAngle),  iy2=cy+ir*Math.sin(endAngle);
+          const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+          path.setAttribute('d',`M${ix1},${iy1} L${x1},${y1} A${r},${r},0,${large},1,${x2},${y2} L${ix2},${iy2} A${ir},${ir},0,${large},0,${ix1},${iy1} Z`);
+          path.setAttribute('fill', seg.c);
+          svg.appendChild(path);
+          startAngle = endAngle;
+        });
+        const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
+        txt.setAttribute('x',cx); txt.setAttribute('y',cy+5);
+        txt.setAttribute('text-anchor','middle');
+        txt.setAttribute('fill','#e2e6f0'); txt.setAttribute('font-size','14');
+        txt.setAttribute('font-weight','700');
+        txt.textContent = total;
+        svg.appendChild(txt);
+      })();
+    </script>
+    {% else %}
+    <div class="empty-state"><div class="icon">🎯</div>No events logged yet</div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- ── Top Processes ─────────────────────────────────────────────────────────── -->
+<div class="card" style="margin-bottom:24px">
+  <div class="section-title">🏆 Top Threat Actors</div>
+  {% if top_processes %}
+    {% set max_score = top_processes[0].threat_score if top_processes else 1 %}
+    {% for p in top_processes %}
+    <div class="proc-row">
+      <span class="proc-label" title="{{ p.name }}">{{ p.name }}</span>
+      <div class="proc-bar-track">
+        <div class="proc-bar-fill" style="width:{{ [(p.threat_score / (max_score or 1)) * 100, 2] | max }}%"></div>
+      </div>
+      <span class="proc-score">{{ p.threat_score }}</span>
+      <span class="badge HIGH" style="margin-left:4px">{{ p.alert_count }} alerts</span>
+      {% if p.terminated_count %}
+      <span class="badge" style="background:rgba(167,139,250,.1);color:#a78bfa;font-size:11px;padding:3px 8px;border-radius:20px">{{ p.terminated_count }}× killed</span>
+      {% endif %}
+      <span style="font-size:11px;color:var(--muted);margin-left:auto">avg {{ p.avg_cpu }}% CPU</span>
+    </div>
+    {% endfor %}
+  {% else %}
+  <div class="empty-state"><div class="icon">🏆</div>No threat data yet. Waiting for process scans…</div>
+  {% endif %}
+</div>
+
+<!-- ── Heatmap ────────────────────────────────────────────────────────────────── -->
+<div class="card">
+  <div class="section-title">🌡️ Alert Heatmap — Hour × Day</div>
+  {% if heatmap.cells %}
+  <div class="heatmap-wrap">
+    <div style="display:flex; gap:3px; margin-bottom:4px; padding-left:31px">
+      {% for h in heatmap.hours %}
+        {% if h % 3 == 0 %}
+        <div class="hm-hour-label" style="width:18px">{{ '%02d'|format(h) }}</div>
+        {% else %}
+        <div style="width:18px"></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% for day in heatmap.days %}
+    <div class="hm-row">
+      <div class="hm-day-label">{{ day }}</div>
+      {% for h in heatmap.hours %}
+        {% set cell = heatmap.cells | selectattr('day','equalto',day) | selectattr('hour','equalto',h) | first %}
+        {% set count = cell.count if cell else 0 %}
+        {% set intensity = (count / (heatmap.max_count or 1)) %}
+        <div class="hm-cell"
+          data-tip="{{ day }} {{ '%02d'|format(h) }}:00 — {{ count }} alert{{ 's' if count != 1 }}"
+          style="background: {% if count == 0 %}var(--surface2){% else %}rgba(239,68,68,{{ [0.15 + intensity*0.85, 1.0]|min }}){% endif %}">
+        </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <div style="margin-top:12px; display:flex; align-items:center; gap:8px; font-size:11px; color:var(--muted)">
+      <span>Low</span>
+      {% for i in range(6) %}
+      <div style="width:14px;height:14px;border-radius:2px;background:rgba(239,68,68,{{ 0.1 + i*0.18 }})"></div>
+      {% endfor %}
+      <span>High</span>
+    </div>
+  </div>
+  {% else %}
+  <div class="empty-state"><div class="icon">🌡️</div>No alert heatmap data yet</div>
+  {% endif %}
+</div>
+{% endblock %}

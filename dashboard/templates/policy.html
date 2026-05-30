@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block title %}Policy Engine{% endblock %}
+
+{% block head %}
+<style>
+  .policy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  @media (max-width: 860px) { .policy-grid { grid-template-columns: 1fr; } }
+
+  .threshold-visual { display: flex; height: 12px; border-radius: 99px; overflow: hidden; margin: 16px 0 8px; }
+  .thresh-low    { background: var(--low); }
+  .thresh-med    { background: var(--medium); }
+  .thresh-high   { background: var(--high); }
+
+  .range-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 18px; }
+
+  .rule-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .rule-row:last-child { border-bottom: none; }
+  .rule-name  { flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .rule-action-badge {
+    padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;
+  }
+  .rule-action-badge.ignore    { background: rgba(107,114,138,.15); color: var(--muted); }
+  .rule-action-badge.alert     { background: var(--medium-bg);      color: var(--medium); }
+  .rule-action-badge.terminate { background: var(--high-bg);        color: var(--high); }
+
+  label.form-label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 5px; font-weight: 500; }
+  input[type="number"], select, input[type="text"].wide {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); padding: 8px 12px; border-radius: 7px;
+    font-size: 13px; font-family: 'Inter', sans-serif;
+    outline: none; transition: border .18s; width: 100%;
+  }
+  input[type="number"]:focus, select:focus, input[type="text"].wide:focus { border-color: var(--accent); }
+  .form-row { display: flex; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+  .form-row > div { flex: 1; min-width: 120px; }
+  select option { background: var(--surface2); }
+
+  .info-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(91,138,244,.1); color: var(--accent);
+    border: 1px solid rgba(91,138,244,.2);
+    padding: 3px 10px; border-radius: 20px; font-size: 11px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>⚙️ Policy Engine</h1>
+    <p>Runtime detection rules — changes take effect within 30 seconds without restart</p>
+  </div>
+  {% if policy.get('updated_at') %}
+  <span class="info-pill">🕐 Last updated {{ policy.updated_at[:19] }}</span>
+  {% endif %}
+</div>
+
+<div class="policy-grid">
+  <!-- ── CPU Thresholds ──────────────────────────────────────────────────── -->
+  <div class="card">
+    <div class="section-title">📊 CPU Risk Thresholds</div>
+
+    {% set low_max    = policy.get('thresholds', {}).get('low_max', 40) %}
+    {% set medium_max = policy.get('thresholds', {}).get('medium_max', 70) %}
+
+    <div class="threshold-visual">
+      <div class="thresh-low"  style="width:{{ low_max }}%"></div>
+      <div class="thresh-med"  style="width:{{ medium_max - low_max }}%"></div>
+      <div class="thresh-high" style="width:{{ 100 - medium_max }}%"></div>
+    </div>
+    <div class="range-labels">
+      <span>🟢 LOW &lt; {{ low_max }}%</span>
+      <span>🟡 MEDIUM ≤ {{ medium_max }}%</span>
+      <span>🔴 HIGH &gt; {{ medium_max }}%</span>
+    </div>
+
+    <form method="POST" action="/policy/thresholds">
+      <div class="form-row">
+        <div>
+          <label class="form-label">LOW max CPU %</label>
+          <input type="number" name="low_max" id="low_max" min="1" max="99" step="1" value="{{ low_max }}">
+        </div>
+        <div>
+          <label class="form-label">MEDIUM max CPU %</label>
+          <input type="number" name="medium_max" id="medium_max" min="1" max="99" step="1" value="{{ medium_max }}">
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px">
+        Any CPU above MEDIUM threshold is classified as <span style="color:var(--high)">HIGH</span> risk.
+      </p>
+      <button type="submit" class="btn btn-primary" id="save-thresholds-btn">Save Thresholds</button>
+    </form>
+  </div>
+
+  <!-- ── Global Settings ────────────────────────────────────────────────── -->
+  <div class="card">
+    <div class="section-title">🔧 Global Detection Settings</div>
+
+    {% set settings_ch  = policy.get('cooldown_hours', 2.0) %}
+    {% set settings_awt = policy.get('auto_whitelist_threshold', 5) %}
+
+    <form method="POST" action="/policy/settings">
+      <div style="margin-bottom:14px">
+        <label class="form-label">Alert Cooldown (hours)</label>
+        <input type="number" name="cooldown_hours" id="cooldown_hours" min="0.1" max="72" step="0.5" value="{{ settings_ch }}">
+        <p style="font-size:11px;color:var(--muted);margin-top:5px">Same process won't alert again within this window.</p>
+      </div>
+      <div style="margin-bottom:18px">
+        <label class="form-label">Auto-Whitelist Threshold (safe runs)</label>
+        <input type="number" name="auto_whitelist_threshold" id="auto_wl_thresh" min="1" max="100" step="1" value="{{ settings_awt }}">
+        <p style="font-size:11px;color:var(--muted);margin-top:5px">Processes seen safely this many times are auto-ignored.</p>
+      </div>
+      <button type="submit" class="btn btn-primary" id="save-settings-btn">Save Settings</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── Per-Process Rules ──────────────────────────────────────────────────── -->
+<div class="card">
+  <div class="section-title">📋 Per-Process Rules
+    <span class="info-pill" style="margin-left:8px">{{ policy.get('process_rules', {})|length }} rules</span>
+  </div>
+
+  <!-- Add new rule -->
+  <form method="POST" action="/policy/rules/add" style="margin-bottom:20px">
+    <div class="form-row" style="align-items:flex-end">
+      <div style="flex:2">
+        <label class="form-label">Process Name</label>
+        <input type="text" class="wide" name="name" id="rule-name" placeholder="e.g. miner.exe" autocomplete="off">
+      </div>
+      <div>
+        <label class="form-label">Action</label>
+        <select name="action" id="rule-action">
+          <option value="ignore">🟢 ignore</option>
+          <option value="alert">🟡 alert</option>
+          <option value="terminate">🔴 terminate</option>
+        </select>
+      </div>
+      <div style="flex:2">
+        <label class="form-label">Reason (optional)</label>
+        <input type="text" class="wide" name="reason" id="rule-reason" placeholder="e.g. always-suspicious">
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary" id="add-rule-btn">＋ Add Rule</button>
+      </div>
+    </div>
+  </form>
+
+  <hr class="divider">
+
+  <!-- Existing rules -->
+  {% set rules = policy.get('process_rules', {}) %}
+  {% if rules %}
+    {% for name, rule in rules.items() %}
+    <div class="rule-row">
+      <span class="rule-name">{{ name }}</span>
+      <span class="rule-action-badge {{ rule.action }}">{{ rule.action }}</span>
+      <span style="font-size:11px;color:var(--muted);flex:1">{{ rule.get('reason', '') }}</span>
+      {% if rule.get('updated_at') %}
+      <span style="font-size:10px;color:var(--muted)">{{ rule.updated_at[:10] }}</span>
+      {% endif %}
+      <form method="POST" action="/policy/rules/delete" style="margin:0">
+        <input type="hidden" name="name" value="{{ name }}">
+        <button type="submit" class="btn btn-danger btn-sm" id="del-rule-{{ loop.index }}">🗑</button>
+      </form>
+    </div>
+    {% endfor %}
+  {% else %}
+  <div class="empty-state"><div class="icon">📋</div>No custom rules yet. Add one above.</div>
+  {% endif %}
+</div>
+{% endblock %}
