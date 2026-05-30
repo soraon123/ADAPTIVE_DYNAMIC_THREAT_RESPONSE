@@ -26,6 +26,7 @@
 8. [API Reference](#8-api-reference)
 9. [Environment Variables](#9-environment-variables)
 10. [Running the System](#10-running-the-system)
+11. [Troubleshooting & Recent Fixes](#11-troubleshooting--recent-fixes)
 
 ---
 
@@ -674,6 +675,22 @@ python app.py   # :5000
 cd agent; pip install -r requirements.txt
 python agent.py
 ```
+
+---
+
+## 11. Troubleshooting & Recent Fixes
+
+### Port 5000 Conflict
+If the Dashboard fails to start with a "port is already allocated" error, this means port `5000` is already in use by another process on your host. 
+**Fix applied:** The `docker-compose.yml` is configured to map the Dashboard to `http://localhost:5080` by default to avoid common conflicts.
+
+### Empty Analytics / Not Seeing Windows Processes
+If the Dashboard only shows ~25 processes (like `dockerd`, `init`, `containerd`) and Analytics is empty, the Docker Agent is only seeing Linux container processes.
+**Fix applied:** Docker's `pid: host` capability is Linux-only. On Windows, you **must** run the Agent natively via PowerShell to monitor actual host processes.
+
+### Continuous Alert Loops
+If a process fluctuates around the HIGH-risk threshold and repeatedly triggers alerts without user interaction.
+**Fix applied (Tier 1 Cooldown):** The Detection Engine now automatically sets the cooldown the exact moment a HIGH-risk alert fires. The same process will not re-alert for the configured cooldown period (default 2 hours) even if the user ignores the popup.
 
 ---
 
